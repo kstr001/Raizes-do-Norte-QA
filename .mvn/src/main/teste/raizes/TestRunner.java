@@ -1,7 +1,11 @@
 package raizes;
 
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
@@ -15,4 +19,8 @@ import org.junit.runner.RunWith;
         tags = "@TS0001-Cadastro"
 )
 public class TestRunner {
+        @AfterAll
+        public static void finalizarTestes() {
+                Conexao.fecharDriver();
+        }
 }
