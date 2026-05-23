@@ -7,8 +7,10 @@
       Dado que acesso o sistema na versao desktop
       E que cadastro um novo usuario
       Quando faco o login no sistema na filial de "São Paulo"
+      Entao verifico se o usuario esta logado
 
     Cenario: Verifico se o usuario foi cadastrado celular
       Dado que acesso o sistema pelo celular
       E que cadastro um novo usuario
       Quando faco o login no sistema na filial de "Curitiba"
+      Entao verifico se o usuario esta logado

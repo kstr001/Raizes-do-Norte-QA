@@ -14,9 +14,9 @@ import org.junit.runner.RunWith;
         glue = {"raizes.statements"},
         plugin = {
                 "pretty",
-                "html:target/cucumber-reports.html"
-        },
-        tags = "@TS0001-Cadastro"
+                "html:target/cucumber-reports.html"}
+//        ,
+//        tags = "@TS0001-Cadastro"
 )
 public class TestRunner {
         @AfterAll
