@@ -4,9 +4,7 @@ import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import raizes.Conexao;
-
-import java.time.Duration;
+import raizes.Utils;
 
 public class entao {
 
@@ -31,40 +29,43 @@ public class entao {
 
     @E("que cadastro um novo usuario")
     public void cadastrarUsuario() throws InterruptedException {
-        WebDriver driver = Conexao.getDriver();
+        WebDriver driver = Utils.getDriver();
         driver.findElement(By.xpath("//button[contains(.,'Novo Cadastro')]")).click();
-        Conexao.tirarPrint("Click em [ Novo Cadastro ]");
+        Utils.tirarPrint("Click em [ Novo Cadastro ]");
         Thread.sleep(3000);
         String nome = "User_"+gerarTextoAleatorioCurto();
-        Conexao.salvarDado("nomeUser", nome);
+        Utils.salvarDado("nomeUser", nome);
         driver.findElement(By.xpath("//input[@placeholder='Nome Completo']")).sendKeys(nome);
-        Conexao.tirarPrint("Seta o Nome Completo");
-        Thread.sleep(2000);
+        Utils.tirarPrint("Seta o Nome Completo");
+        Thread.sleep(1000);
         String email = gerarEmailAleatorio();
         driver.findElement(By.xpath("//input[@type='email']")).sendKeys(email);
-        Conexao.tirarPrint("Seta email do usuario");
-        Thread.sleep(2000);
+        Utils.tirarPrint("Seta email do usuario");
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//input[@placeholder='Escolha um Usuário']")).sendKeys(nome);
-        Conexao.tirarPrint("Seta Nome do usuario");
-        Thread.sleep(2000);
+        Utils.tirarPrint("Seta Nome do usuario");
+        Thread.sleep(1000);
         String senha = gerarSenhaAleatoria();
-        Conexao.salvarDado("senha", senha);
+        Utils.salvarDado("senha", senha);
         driver.findElement(By.xpath("//input[@placeholder='Crie uma Senha']")).sendKeys(senha);
-        Conexao.tirarPrint("Seta Senha do usuario");
-        Thread.sleep(2000);
+        Utils.tirarPrint("Seta Senha do usuario");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//input[contains(@type,'checkbox')]")).click();
+        Utils.tirarPrint("Click em [ Aceitar termos de uso ]");
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//button[contains(.,'Finalizar Cadastro')]")).click();
-        Conexao.tirarPrint("Click em [ Finalizar Cadastro ]");
+        Utils.tirarPrint("Click em [ Finalizar Cadastro ]");
         Thread.sleep(3000);
         driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
-        Conexao.tirarPrint("Click em [ OK ]");
+        Utils.tirarPrint("Click em [ OK ]");
         Thread.sleep(3000);
     }
     @Entao("verifico se o usuario esta logado")
     public void verificarUsuarioLogado() throws InterruptedException {
-        WebDriver driver = Conexao.getDriver();
-        String nome = Conexao.pegarDado("nomeUser");
-        Thread.sleep(5000);
+        WebDriver driver = Utils.getDriver();
+        String nome = Utils.pegarDado("nomeUser");
+        Thread.sleep(3000);
         driver.findElement(By.xpath("//h1[contains(.,'Bem-vindo, " + nome + "')]"));
-        Conexao.tirarPrint("O usuario " + nome + " esta logado");
+        Utils.tirarPrint("O usuario " + nome + " esta logado");
     }
 }

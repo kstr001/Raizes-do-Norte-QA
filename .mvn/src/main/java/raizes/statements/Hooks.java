@@ -1,7 +1,7 @@
 package raizes.statements;
 
 import io.cucumber.java.Before;
-import raizes.Conexao;
+import raizes.Utils;
 
 public class Hooks {
 
@@ -10,7 +10,7 @@ public class Hooks {
     @Before
     public void antesDoCenario() {
         if (!pastaLimpa) {
-            Conexao.limparPrintsAntigos();
+            Utils.limparPrintsAntigos();
             pastaLimpa = true;
         }
     }

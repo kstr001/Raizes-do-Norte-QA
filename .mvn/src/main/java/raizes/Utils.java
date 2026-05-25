@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Conexao {
+public class Utils {
 
     private static WebDriver driver;
 
