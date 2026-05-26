@@ -1,7 +1,7 @@
 #language: pt
 
-  @TS0002_RealizarPedido
-  Funcionalidade: Realizar pedido 2 tapiocas
+  @TS0002_RealizarPedidoDesktop
+  Funcionalidade: Realizar pedido 2 tapiocas Desktop
 
     Cenario: Realizar pedido 2 tapiocas Desktop
       Dado que acesso o sistema na versao desktop

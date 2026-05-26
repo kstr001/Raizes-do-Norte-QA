@@ -138,7 +138,7 @@ public class entao {
             driver.findElement(By.xpath("//button[contains(.,'Pagar')]")).click();
             Utils.tirarPrint("Click em [ Pagar ]");
             Thread.sleep(5000);
-            java.util.List<WebElement> mensagens = driver.findElements(By.xpath("//div[contains(.,'Pedidos em Preparação')]"));
+            java.util.List<WebElement> mensagens = driver.findElements(By.xpath("(//div[contains(.,'Pedido #1')])[1]"));
             Utils.tirarPrint("Resultasdo do Status do pagamento");
             if (!mensagens.isEmpty()){
                 System.out.println("Pagamento sucesso");
