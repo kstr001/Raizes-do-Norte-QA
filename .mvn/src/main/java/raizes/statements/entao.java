@@ -188,4 +188,55 @@ public class entao {
         Utils.tirarPrint("Click em [ OK ]");
         Thread.sleep(3000);
     }
+
+    @E("escolho 3 itens do catalogo")
+    public void escolho3ItensDoCatalogo() throws InterruptedException {
+        for (int i = 0; i < 3; i++){
+            if (i == 0){
+                driver.findElement(By.xpath("//div[@class='produto'][contains(.,'Tapioca ')]")).click();
+                Utils.tirarPrint("Click no produto [ Tapioca ]");
+                Thread.sleep(1000);
+                driver.findElement(By.xpath("//button[@onclick='adicionarCarrinho()'][contains(.,'Adicionar ao Carrinho')]")).click();
+                Utils.tirarPrint("Click em adicionar ao Carrinho");
+                Thread.sleep(3000);
+                driver.findElement(By.xpath("(//button[contains(.,'Voltar')])[2]")).click();
+                Utils.tirarPrint("Click em Voltar");
+                Thread.sleep(3000);
+            }
+            else if (i == 1){
+                driver.findElement(By.xpath("//span[contains(.,'Bebidas')]")).click();
+                Utils.tirarPrint("Click em [ Bebidas ]");
+                Thread.sleep(1000);
+                driver.findElement(By.xpath("//div[@class='produto'][contains(.,'Suco ')]")).click();
+                Utils.tirarPrint("Click no produto [ Suco ]");
+                Thread.sleep(1000);
+                driver.findElement(By.xpath("//button[@onclick='adicionarCarrinho()'][contains(.,'Adicionar ao Carrinho')]")).click();
+                Utils.tirarPrint("Click em adicionar ao Carrinho");
+                Thread.sleep(3000);
+                driver.findElement(By.xpath("(//button[contains(.,'Voltar')])[2]")).click();
+                Utils.tirarPrint("Click em Voltar");
+                Thread.sleep(3000);
+            }
+            else if (i == 2){
+                driver.findElement(By.xpath("//span[contains(.,'Especiais')]")).click();
+                Utils.tirarPrint("Click em [ Especiais ]");
+                Thread.sleep(1000);
+                driver.findElement(By.xpath("//div[@class='produto'][contains(.,'Pamonha ')]")).click();
+                Utils.tirarPrint("Click no produto [ Pamonha ]");
+                Thread.sleep(1000);
+                driver.findElement(By.xpath("//button[@onclick='adicionarCarrinho()'][contains(.,'Adicionar ao Carrinho')]")).click();
+                Utils.tirarPrint("Click em adicionar ao Carrinho");
+                Thread.sleep(5000);
+            }
+        }
+    }
+
+    @Entao("removo o primeiro item escolhido")
+    public void removerOPrimeiroItemEscolhido() throws InterruptedException {
+        Utils.tirarPrint("Valdia Carrinho");
+        driver.findElement(By.xpath("(//div[contains(.,'Tapioca')])//button[contains(.,'Remover')]")).click();
+        Utils.tirarPrint("Click em [ Remover ]");
+        Thread.sleep(1000);
+        Utils.tirarPrint("Valida valor alterado");
+    }
 }
