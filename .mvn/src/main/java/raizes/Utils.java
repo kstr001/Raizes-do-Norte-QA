@@ -4,7 +4,6 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -18,12 +17,13 @@ public class Utils {
 
     private static final Map<String, Object> contexto = new HashMap<>();
 
+    // MÉTODO Permite que o Hooks envie o AndroidDriver para cá
+    public static void setDriver(WebDriver driverInformado) {
+        driver = driverInformado;
+    }
+
+    // MÉTODO ATUALIZADO: Retorna o driver ativo sem forçar um ChromeDriver de PC
     public static WebDriver getDriver() {
-        if (driver == null) {
-            String chromeDriver = "drivers/chromedriver.exe";
-            System.setProperty("webdriver.chrome.driver", chromeDriver);
-            driver = new ChromeDriver();
-        }
         return driver;
     }
 
@@ -85,23 +85,6 @@ public class Utils {
             }
         } else {
             System.out.println("[INFO] Pasta run_results não encontrada. Ela será criada no primeiro print.");
-        }
-    }
-
-
-    // Método para forçar a tela em Full HD (1080p)
-    public static void mudarTelaPara1080p() {
-        if (driver != null) {
-            driver.manage().window().setSize(new Dimension(1920, 1080));
-            System.out.println("Tela ajustada para Full HD (1920x1080)");
-        }
-    }
-
-    // Método para forçar a tela no tamanho do iPhone 12 Pro Max
-    public static void mudarTelaParaIphone12ProMax() {
-        if (driver != null) {
-            driver.manage().window().setSize(new Dimension(428, 926));
-            System.out.println("Tela ajustada para formato iPhone 12 Pro Max (428x926)");
         }
     }
 

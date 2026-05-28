@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import raizes.Utils;
 
+import static raizes.statements.Hooks.driver;
+
 public class entao {
 
     public String gerarTextoAleatorioCurto() {
@@ -31,7 +33,6 @@ public class entao {
 
     @E("que cadastro um novo usuario")
     public void cadastrarUsuario() throws InterruptedException {
-        WebDriver driver = Utils.getDriver();
         driver.findElement(By.xpath("//button[contains(.,'Novo Cadastro')]")).click();
         Utils.tirarPrint("Click em [ Novo Cadastro ]");
         Thread.sleep(3000);
@@ -64,7 +65,6 @@ public class entao {
     }
     @Entao("verifico se o usuario esta logado")
     public void verificarUsuarioLogado() throws InterruptedException {
-        WebDriver driver = Utils.getDriver();
         String nome = Utils.pegarDado("nomeUser");
         Thread.sleep(3000);
         driver.findElement(By.xpath("//h1[contains(.,'Bem-vindo, " + nome + "')]"));
@@ -72,7 +72,6 @@ public class entao {
     }
     @E("entro no cardapio")
     public void entrarCardapio() throws InterruptedException {
-        WebDriver driver = Utils.getDriver();
         driver.findElement(By.xpath("//button[@onclick='abrirCardapio()'][contains(.,'Cardápio')]")).click();
         Utils.tirarPrint("Click em [ Cardapio ]");
         Thread.sleep(1000);
@@ -98,7 +97,6 @@ public class entao {
 
     @E("escolho 2 tapiocas")
     public void escolho2Tapiocas() throws InterruptedException {
-        WebDriver driver = Utils.getDriver();
         for (int i = 0; i < 2; i++){
             driver.findElement(By.xpath("//div[@class='produto'][contains(.,'Tapioca ')]")).click();
             Utils.tirarPrint("Click no produto [ Tapioca ]");
@@ -116,7 +114,6 @@ public class entao {
 
     @E("escolho o endereco {string} {string}")
     public void escolhoOEndereco(String cep, String numero) throws InterruptedException {
-        WebDriver driver = Utils.getDriver();
         driver.findElement(By.xpath("//button[contains(.,'Ir para definir o endereço')]")).click();
         Utils.tirarPrint("Click em [ Ir para o definir endereço ]");
         Thread.sleep(1000);
@@ -133,7 +130,6 @@ public class entao {
 
     @Entao("solicio a atulizacao do status de pagamente externo sucesso")
     public void solicioAatulizacaoDoStatusDePagamentoSucesso() throws InterruptedException {
-        WebDriver driver = Utils.getDriver();
         for (int i = 0; i < 5; i++){
             driver.findElement(By.xpath("//button[contains(.,'Pagar')]")).click();
             Utils.tirarPrint("Click em [ Pagar ]");

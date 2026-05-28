@@ -7,11 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import raizes.Utils;
 
+import static raizes.statements.Hooks.driver;
+
 public class quando {
 
     @Quando("faco o login no sistema na filial de {string}")
     public void facoLoginNoSistema(String unidade) throws InterruptedException {
-        WebDriver driver = Utils.getDriver();
         String user = Utils.pegarDado("nomeUser");
         driver.findElement(By.xpath("//input[@placeholder='Usuário']")).sendKeys(user);
         Utils.tirarPrint("Define o usuario >>" + user);
