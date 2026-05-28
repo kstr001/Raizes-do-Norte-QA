@@ -63,6 +63,7 @@ public class entao {
         Utils.tirarPrint("Click em [ OK ]");
         Thread.sleep(3000);
     }
+
     @Entao("verifico se o usuario esta logado")
     public void verificarUsuarioLogado() throws InterruptedException {
         String nome = Utils.pegarDado("nomeUser");
@@ -70,6 +71,7 @@ public class entao {
         driver.findElement(By.xpath("//h1[contains(.,'Bem-vindo, " + nome + "')]"));
         Utils.tirarPrint("O usuario " + nome + " esta logado");
     }
+
     @E("entro no cardapio")
     public void entrarCardapio() throws InterruptedException {
         driver.findElement(By.xpath("//button[@onclick='abrirCardapio()'][contains(.,'Cardápio')]")).click();
@@ -143,5 +145,47 @@ public class entao {
         }
             System.out.println("Erro ao consultar pagamento tentando novamente");
         }
+    }
+
+    @E("que inicio o cadastro De um novo usuario")
+    public void queInicioOCadastroDeUmNovoUsuario() throws InterruptedException {
+        driver.findElement(By.xpath("//button[contains(.,'Novo Cadastro')]")).click();
+        Utils.tirarPrint("Click em [ Novo Cadastro ]");
+        Thread.sleep(3000);
+        String nome = "User_"+gerarTextoAleatorioCurto();
+        Utils.salvarDado("nomeUser", nome);
+        driver.findElement(By.xpath("//input[@placeholder='Nome Completo']")).sendKeys(nome);
+        Utils.tirarPrint("Seta o Nome Completo");
+        Thread.sleep(1000);
+        String email = gerarEmailAleatorio();
+        driver.findElement(By.xpath("//input[@type='email']")).sendKeys(email);
+        Utils.tirarPrint("Seta email do usuario");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//input[@placeholder='Escolha um Usuário']")).sendKeys(nome);
+        Utils.tirarPrint("Seta Nome do usuario");
+        Thread.sleep(1000);
+        String senha = gerarSenhaAleatoria();
+        Utils.salvarDado("senha", senha);
+        driver.findElement(By.xpath("//input[@placeholder='Crie uma Senha']")).sendKeys(senha);
+        Utils.tirarPrint("Seta Senha do usuario");
+        Thread.sleep(1000);
+        Utils.tirarPrint("Não click em [ Aceitar termos de uso ]");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//button[@id='btnFinalizarCadastro' and @disabled]")).click();
+        Utils.tirarPrint("Click em [ Finalizar Cadastro ]");
+        System.out.println("Como o esperado não foi possivel seguir com o cadastro");
+    }
+
+    @E("que aceito os termos de uso")
+    public void queAceitoOsTermosDeUso() throws InterruptedException {
+        driver.findElement(By.xpath("//input[contains(@type,'checkbox')]")).click();
+        Utils.tirarPrint("Click em [ Aceitar termos de uso ]");
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//button[contains(.,'Finalizar Cadastro')]")).click();
+        Utils.tirarPrint("Click em [ Finalizar Cadastro ]");
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//button[contains(.,'OK')]")).click();
+        Utils.tirarPrint("Click em [ OK ]");
+        Thread.sleep(3000);
     }
 }
